@@ -3,6 +3,7 @@ import Update from '@/components/update'
 import logoVite from './assets/logo-vite.svg'
 import logoElectron from './assets/logo-electron.svg'
 import './App.scss'
+import { ipcRenderer } from 'electron'
 
 console.log('[App.tsx]', `Hello world from Electron ${process.versions.electron}!`)
 
@@ -18,8 +19,9 @@ function App() {
       </div>
       <h1>Electron + Vite + React</h1>
       <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => ipcRenderer.send('test')}>
           count is {count}
+          
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
